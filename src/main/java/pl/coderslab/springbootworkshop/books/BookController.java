@@ -26,13 +26,13 @@ public class BookController {
   }
 
   @PostMapping
-  public Book createBook(@Valid Book book) {
+  public Book createBook(@RequestBody @Valid Book book) {
     log.info("Book requested to be created: {}", book);
     return bookService.createBook(book);
   }
 
   @PutMapping("/{id}")
-  public Book updateBook(@PathVariable Long id, @Valid Book book) {
+  public Book updateBook(@PathVariable Long id, @RequestBody @Valid Book book) {
     log.info("Book requested to be updated: {}", book);
     if (!id.equals(book.getId())) {
       throw new ResponseStatusException(

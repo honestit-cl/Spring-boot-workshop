@@ -1,0 +1,23 @@
+### Get all books - unauthenticated
+
+GET localhost:8080/api/books
+
+### Create book - authenticated as user
+
+POST localhost:8080/api/books
+Content-Type: application/json
+Authorization: Basic dXNlcjpwYXNz
+
+{
+  "title": "abc",
+  "author": "John D."
+}
+
+### Delete book - authenticated as user - fail
+
+DELETE localhost:8080/api/books/2
+
+### Delete book - authenticated as admin
+
+DELETE localhost:8080/api/books/2
+Authorization: Basic YWRtaW46YWRtaW4xMjM=
