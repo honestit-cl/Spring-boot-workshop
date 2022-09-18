@@ -2,6 +2,8 @@ package pl.coderslab.springbootworkshop.books;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -42,7 +44,11 @@ public class BookController {
   }
 
   @DeleteMapping("/{id}")
-  public Book deleteBook(@PathVariable Long id) {
+  public Book deleteBook(@PathVariable Long id, Authentication authentication) {
+    String usernameFromAnnotation = authentication.getName();
+    String usernameFromContext = SecurityContextHolder.getContext().getAuthentication().getName();
+    log.info(
+        "Deleting book (id = {}) by ({} | {})", id, usernameFromAnnotation, usernameFromContext);
     Book book = bookService.getBook(id);
     log.info("Book requested to be deleted: {}", book);
 
