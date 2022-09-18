@@ -1,10 +1,12 @@
 package pl.coderslab.springbootworkshop.books;
 
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@Primary
 public class JpaBookService implements BookService {
 
   private final BookRepository bookRepository;
