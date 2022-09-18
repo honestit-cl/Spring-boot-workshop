@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/books")
+// @Slf4j -> private static Logger log = LoggerFactory.getLogger(BookController.class);
 @Slf4j
 public class BookController {
 
@@ -34,7 +35,8 @@ public class BookController {
   public Book updateBook(@PathVariable Long id, @Valid Book book) {
     log.info("Book requested to be updated: {}", book);
     if (!id.equals(book.getId())) {
-      throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Id from payload does not match path");
+      throw new ResponseStatusException(
+          HttpStatus.BAD_REQUEST, "Id from payload does not match path");
     }
     return bookService.updateBook(book);
   }

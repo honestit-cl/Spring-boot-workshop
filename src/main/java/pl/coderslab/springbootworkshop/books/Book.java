@@ -10,6 +10,9 @@ import javax.validation.constraints.Positive;
 import javax.validation.constraints.Size;
 
 @Entity
+// Nie trzeba tego robić w Spring Boot, ponieważ Spring Boot wykorzystuje już
+// strategię nazewniczą z Hibernate, która pisze wszystko małymi literkami
+// i camelCase -> snake_case, ale "-s" i "-es" już trzeba samemu
 @Table(name = "books")
 @Getter
 @Setter

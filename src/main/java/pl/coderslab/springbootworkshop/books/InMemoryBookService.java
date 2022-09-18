@@ -41,6 +41,6 @@ public class InMemoryBookService implements BookService {
 
   @Override
   public Book deleteBook(Long id) {
-    return null;
+    return inMemoryStore.delete(inMemoryStore.findById(id));
   }
 }
